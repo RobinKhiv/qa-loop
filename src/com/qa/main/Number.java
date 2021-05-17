@@ -11,34 +11,25 @@ public class Number {
 	// returns a String representation of this number, for 
 	// example 1 = one, 11 = eleven, 21 = twenty-one.
 	public static String getString(int i) {
-		String[] lowNum = new String [] {"one","two","three","four","five"
+		String[] nums = new String [] {"one","two","three","four","five"
 				,"six","seven","eight","nine","ten","eleven","twelve", "thirteen"
 				, "fourthteen", "fifthteen", "sixteen", "seventeen","eighteen","nineteen"};
 		
-		String[] specialNum = new String[] { "twenty", "thirty", "fourty", "fifty", "sixty"
+		String[] prefixs = new String[] { "twenty", "thirty", "fourty", "fifty", "sixty"
 				, "seventy","eigthy","ninety"};
 		String result = "";
-		String currentNum = Integer.toString(i);		
-		int k = 0;
+	
+		int prefix = i/10;
+		int postfix = i % 10;
 		
-		for (int j = 0; j < currentNum.length(); j++ ){
-			k = Character.getNumericValue(currentNum.charAt(j));
-			if (j > 0) {
-				if (k == 0)
-					break;
-				else
-					result+= "-";
-			}
-			if (currentNum.length() > 1 && j == 0) {
-				if (k > 1)
-					result+= specialNum[k - 2];	
-				else {
-					result+= lowNum[i - 1];
-					break;
-				}
-			} else 
-				result+= lowNum[k - 1];
+		if(i >= 20) {
+			result = prefixs[prefix - 2];
+			if(postfix != 0) 
+				result = result + "-"+ nums[postfix -1];		
 		}
+		else
+			result+= nums[i - 1];
+		
 		return result;
 	}
 }
