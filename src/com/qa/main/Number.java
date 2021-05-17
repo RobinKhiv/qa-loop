@@ -21,22 +21,23 @@ public class Number {
 		String currentNum = Integer.toString(i);		
 		int k = 0;
 		
-		for(int j = 0; j < currentNum.length(); j++ ){
+		for (int j = 0; j < currentNum.length(); j++ ){
 			k = Character.getNumericValue(currentNum.charAt(j));
-			if(j > 0)
-				if(k == 0)
+			if (j > 0) {
+				if (k == 0)
 					break;
 				else
 					result+= "-";
-			if(currentNum.length() > 1 && j == 0) {
-				if(k > 1)
-					result = result + specialNum[k - 2];	
+			}
+			if (currentNum.length() > 1 && j == 0) {
+				if (k > 1)
+					result+= specialNum[k - 2];	
 				else {
-					result = result + lowNum[i - 1];
+					result+= lowNum[i - 1];
 					break;
 				}
 			} else 
-				result = result + lowNum[k - 1];
+				result+= lowNum[k - 1];
 		}
 		return result;
 	}
